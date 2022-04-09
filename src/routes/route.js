@@ -7,7 +7,7 @@ const lodash = require('lodash')
 const router = express.Router();
 
 router.get('/test-me', function (req, res) {
-    loggerModule.welcomeMessage()
+    loggerModule.key()
     helperModule.printTodaysDate()
     helperModule.printCurrentMonth()
     helperModule.printBatchInformation()

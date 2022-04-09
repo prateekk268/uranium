@@ -3,7 +3,7 @@ let trim = function(){
 }
 
 let changetoLowerCase = function() {
-    console.log('The result after using toLowerCase function is :', 'SAbIHa'.toLowerCase())
+    console.log('The result after using toLowerCase function is :', 'prATEEk'.toLowerCase())
 }
 
 let changeToUpperCase = function() {
