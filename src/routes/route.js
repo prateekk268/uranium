@@ -9,13 +9,93 @@ router.get('/user-profile/:abcd', function(req, res) {
     res.send('dummy response')
 })
 
-router.get('/test-me', function (req, res) {
-    console.log('------------------')
-    console.log(req)
-    console.log('------------------')
-    console.log('These are the request query parameters: ', req.query)
-    res.send('My first ever api!')
-});
+// router.get('/movies', function (req, res) {
+// const names = [ 'you', 'parasite', 'batman', 'joker']
+// let arry = []
+// for(let i = 0; i <= names.length; i++){
+//     arry.push(names[i])
+
+// }
+//     res.send(arry)
+// });
+
+
+
+// router.get('/movies/:indexNumber', function (req, res) {
+//     const names = [ 'you', 'parasite', 'batman', 'joker']
+//     let arry;
+//     let n = req.params.indexNumber
+//     for(let i = 0; i < names.length; i++){
+//         if(i == n){
+//             arry = names[i]
+        
+//         }
+    
+//     }
+//         res.send(arry)
+//     });
+
+    router.get('/movies/:indexNumber', function (req, res) {
+        const names = [ 'you', 'parasite', 'batman', 'joker']
+        let arry;
+        let n = req.params.indexNumber
+        for(let i = 0; i < names.length; i++){
+            if( i < n ){
+                arry = "use index between 0 to 3"
+            }
+            if(i == n){
+                arry = names[i]
+            
+            }
+        
+        }
+            res.send(arry)
+        });
+
+        router.get('/films', function (req, res) {
+            let films=[ {
+                "id": 1,
+                "name": "The Shining"
+               }, {
+                "id": 2,
+                "name": "Incendies"
+               }, {
+                "id": 3,
+                "name": "Rang de Basanti"
+               }, {
+                "id": 4,
+                "name": "Finding Nemo"
+               }]
+             
+               res.send(films)
+            });
+            router.get('/films/:filmId', function (req, res) {
+                let films=[ {
+                    "id": 1,
+                    "name": "The Shining"
+                   }, {
+                    "id": 2,
+                    "name": "Incendies"
+                   }, {
+                    "id": 3,
+                    "name": "Rang de Basanti"
+                   }, {
+                    "id": 4,
+                    "name": "Finding Nemo"
+                   }]
+                
+                   let pramId = req.params.filmId;
+                 
+                for(let i=0;i<films.length;i++){
+                   
+                    if(pramId==films[i].id){
+                        res.send(films[i])
+                        break;
+                    }   
+                }
+                res.send("Error Invalid Id")
+                 
+                });
 
 
 
