@@ -4,6 +4,7 @@ const router = express.Router();
 const authorController= require("../controllers/authorController")
 const bookController= require("../controllers/bookController")
 const controllers1 = require("../controllers/controller1")
+const controller2 = require("../controllers/controller2")
 
 
 router.get("/test-me", function (req, res) {
@@ -17,9 +18,10 @@ router.get("/getBooksWithAuthorPublisher", controllers1.getBooksWithAuthorPublis
 router.put("/books/:pname", controllers1.hardCover)
 
 
-
-
-
+router.post("/branch", controller2.branch)
+router.post("/developer", controller2.developer)
+router.get("/scholarship", controller2.scholarship)
+router.get("/developers" ,controller2.getDeveloper );
 
 
 router.post("/createAuthor", authorController.createAuthor  )
