@@ -1,7 +1,7 @@
 const userModel = require("../models/userModel")
 const jwt = require('jsonwebtoken')
 
-const { checkData, validTitle, validString, validMobileNum, validEmail, validPwd, validNum, isValid} = require("../validator/validation")
+const { checkData, validTitle, validString, validMobileNum, validEmail, validPwd, isValid} = require("../validator/validation")
 
 /////////////////////////////////////////////////create User////////////////////////////////////////////////////////////////////////////////
 

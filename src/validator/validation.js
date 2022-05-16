@@ -67,18 +67,5 @@ const checkData = (object) => {
       return true;
     }
   }
-
-  const validISBN = (Number) => {
-    if (/^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$/.test(Number)) { 
-      return true
-    }else {
-      return false;
-    };
-  };
-
-  const isValidString = function (value) {
-    if (typeof value === "string" && value.trim().length === 0) return false;
-    return true;
-};
   
-  module.exports = { isValid, checkData, validTitle, validString, validMobileNum, validEmail, validPwd, isValidObjectId ,validDate, validISBN, isValidString};
+  module.exports = { isValid, checkData, validTitle, validString, validMobileNum, validEmail, validPwd, isValidObjectId ,validDate};

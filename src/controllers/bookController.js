@@ -5,7 +5,7 @@ const reviewModel = require("../models/reviewModel")
 
 
 
-const {checkData,validString,isValidObjectId,validDate, validISBN,isValidString,isValid} = require("../validator/validation")
+const {checkData,validString,isValidObjectId,validDate,} = require("../validator/validation")
 
 ////////////////////////////////////////////////////create Book////////////////////////////////////////////////////////////////////
 
@@ -30,10 +30,7 @@ const createBook = async function (req, res) {
 
     //validate title, excerpt, category,subcategory
     if (validString(data.title) || validString(data.excerpt) || validString(data.category) || validString(data.subcategory)) {
-      return res.status(400).send({status: false,message: "data should not contain Numbers its only contains Characters"})}
-
-    //validate the ISBN
-    if(!validISBN(data.ISBN)) return res.status(400).send({status: false, message: "Enter a valid ISBN Number"})  
+      return res.status(400).send({status: false,message: "data should not contain Numbers its only contains Characters"})}  
 
     //check title and isbn is unique or not
     let checkUniqueValues = await bookModel.findOne({$or: [{title: data.title}, {ISBN: data.ISBN}]})
@@ -78,6 +75,8 @@ const getFilteredBooks = async (req, res) => {
       if (getBooks.length == 0) return res.status(404).send({status: false,message: "No books found"});
       return res.status(200).send({status: true,message: "Books list",data: getBooks});
     }
+
+    //filter query
 
     data.isDeleted = false;
 
@@ -140,9 +139,8 @@ const updateBookDetails = async function (req, res) {
     }
 
     if(validString(data.title) || validString(data.excerpt)) return res.status(400).send({status: false, message: "Data should not contain Numbers"})
-    if(!validISBN(data.ISBN)) return res.status(400).send({status: false, message: "Enter a valid ISBN Number"}) 
 
-    if(validDate(data.releasedAt)) return res.status(200).send({status: false, message: "Enter a valid released date in (YYYY-MM-DD format"})
+    if(!validDate(data.releasedAt)) return res.status(200).send({status: false, message: "Enter a valid released date in (YYYY-MM-DD format"})
 
     let changeDetails = await bookModel.findOneAndUpdate({_id: bookId}, { title: data.title, excerpt: data.excerpt, releasedAt: data.releasedAt, ISBN: data.ISBN }, {new: true})
     res.status(200).send({status: true,message: "Successfully updated book details.", data: changeDetails})
