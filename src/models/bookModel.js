@@ -50,7 +50,8 @@ const bookSchema = new mongoose.Schema( {
             type: Date,
             required: true,
 
-        }
+        },
+        coverLink: { type: String, required: true, trim: true }
       }, { timestamps: true });
 
 module.exports = mongoose.model('Books', bookSchema)
